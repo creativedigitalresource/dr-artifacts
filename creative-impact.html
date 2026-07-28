@@ -133,6 +133,7 @@
   .sec-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
   /* ===== DEPARTMENT CARDS ===== */
+  .ask-legend { font-size: 11px; color: var(--faint); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   .dept-list { display: flex; flex-direction: column; gap: 8px; }
   .dept-card {
     background: var(--card); border-radius: 15px; padding: 16px 24px; box-shadow: var(--shadow);
@@ -145,6 +146,24 @@
   .dept-with { font-size: 11.5px; color: var(--faint); font-weight: 600; }
   .dept-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
   .dept-text b { color: var(--ink); font-weight: 700; }
+
+  /* ===== SHAY'S ASK: badges + highlights ===== */
+  .ask-badge {
+    display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9.5px;
+    letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px;
+    line-height: 1.4; white-space: nowrap;
+  }
+  .ask-badge--time { background: rgba(38,169,225,0.13); color: #1783AD; border: 1px solid rgba(38,169,225,0.35); }
+  .ask-badge--result { background: rgba(246,147,30,0.14); color: #B96A0E; border: 1px solid rgba(246,147,30,0.35); }
+  .ask-badge--pending { background: var(--paper); color: var(--faint); border: 1px dashed var(--line); }
+  @media (prefers-color-scheme: dark) {
+    .ask-badge--time { color: #7CD2F5; }
+    .ask-badge--result { color: #F5B060; }
+  }
+  :root[data-theme="dark"] .ask-badge--time { color: #7CD2F5; }
+  :root[data-theme="dark"] .ask-badge--result { color: #F5B060; }
+  .hl-time { background: rgba(38,169,225,0.16); padding: 1px 5px; border-radius: 5px; }
+  .hl-result { background: rgba(246,147,30,0.18); padding: 1px 5px; border-radius: 5px; }
 
   /* ===== INITIATIVES GRID ===== */
   .init-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -228,28 +247,29 @@
   </div>
 
   <div class="sec-label">Department by Department</div>
+  <div class="ask-legend">Badges flag what Shay asked to see directly: <span class="ask-badge ask-badge--time">Time Saved</span> <span class="ask-badge ask-badge--result">Client Result</span> <span class="ask-badge ask-badge--pending">No Data Yet</span></div>
   <div class="dept-list">
 
     <div class="dept-card">
       <div class="dept-num tnum">01</div>
       <div>
-        <div class="dept-title-row"><span class="dept-title">Digital Ads &amp; Landing Pages</span><span class="dept-with">with Content &amp; Ads teams</span></div>
-        <div class="dept-text">Built the bridge between all three teams: <b>10 proven, high-converting Instapage dental LP templates</b> that Content now writes to and Creative brands, instead of starting every build from a blank page. Average build time has already dropped from <b>5&ndash;6 hours to roughly 3&ndash;4</b>, and is trending toward a 2&ndash;3 hour target as adoption matures across the rest of the portfolio. Beyond build time, Ads has been fully relieved of hands-on design and build work on these pages: what used to be a full page build on their side is now roughly <b>30 minutes of strategy input</b> per page, with Creative owning the rest end to end.</div>
+        <div class="dept-title-row"><span class="dept-title">Digital Ads &amp; Landing Pages</span><span class="dept-with">with Content &amp; Ads teams</span><span class="ask-badge ask-badge--time">Time Saved</span></div>
+        <div class="dept-text">Built the bridge between all three teams: <b>10 proven, high-converting Instapage dental LP templates</b> that Content now writes to and Creative brands, instead of starting every build from a blank page. Average build time has already dropped from <b>5&ndash;6 hours to roughly 3&ndash;4</b>, and is trending toward a 2&ndash;3 hour target as adoption matures across the rest of the portfolio. Beyond build time, Ads has been fully relieved of hands-on design and build work on these pages: what used to be a full page build on their side is now roughly <b class="hl-time">30 minutes of strategy input</b> per page, with Creative owning the rest end to end.</div>
       </div>
     </div>
 
     <div class="dept-card">
       <div class="dept-num tnum">02</div>
       <div>
-        <div class="dept-title-row"><span class="dept-title">Tech Ops</span><span class="dept-with">with Jose Diaz &amp; Adrian Molano</span></div>
-        <div class="dept-text">Partnered directly with Tech Ops to build an <b>Instapage landing page generator</b>: enter client info, get a page back roughly 90% built, and a designer polishes it the rest of the way. It's live and actively improving &mdash; color palettes, template selection, and font auto-fill have all shipped in the past month, freeing Creative to spend time on judgment instead of assembly. The lift runs both directions: internal tools Creative builds fully in-house (the Creative Dashboard, QR generator, email signature tool) cost Tech Ops zero build time, and MVP-first tools like the Instapage generator &mdash; where Creative ships a working prototype before Tech Ops finalizes it &mdash; save an estimated <b>40&ndash;50%</b> of Tech Ops' typical build time by skipping discovery and the first draft. That estimate hasn't been validated with Tech Ops directly yet.</div>
+        <div class="dept-title-row"><span class="dept-title">Tech Ops</span><span class="dept-with">with Jose Diaz &amp; Adrian Molano</span><span class="ask-badge ask-badge--time">Time Saved</span></div>
+        <div class="dept-text">Partnered directly with Tech Ops to build an <b>Instapage landing page generator</b>: enter client info, get a page back roughly 90% built, and a designer polishes it the rest of the way. It's live and actively improving &mdash; color palettes, template selection, and font auto-fill have all shipped in the past month, freeing Creative to spend time on judgment instead of assembly. The lift runs both directions: internal tools Creative builds fully in-house (the Creative Dashboard, QR generator, email signature tool) cost Tech Ops zero build time, and MVP-first tools like the Instapage generator &mdash; where Creative ships a working prototype before Tech Ops finalizes it &mdash; save an estimated <b class="hl-time">40&ndash;50%</b> of Tech Ops' typical build time by skipping discovery and the first draft. That estimate hasn't been validated with Tech Ops directly yet.</div>
       </div>
     </div>
 
     <div class="dept-card">
       <div class="dept-num tnum">03</div>
       <div>
-        <div class="dept-title-row"><span class="dept-title">SEO</span><span class="dept-with">with Hannah</span></div>
+        <div class="dept-title-row"><span class="dept-title">SEO</span><span class="dept-with">with Hannah</span><span class="ask-badge ask-badge--pending">No Data Yet</span></div>
         <div class="dept-text">Pitched a new content format: <b>talking-head AI-avatar video and audio versions</b> of every blog post, client-facing and internal, to lift on-page time and give existing written content new legs across YouTube, Instagram, TikTok, and podcast feeds, and as a potential paid add-on to the blog service. Still at the idea stage, no committed start date yet. Separately, Rich has been hands-on helping Hannah get set up with Claude Code, including recovering her task assignments after a bulk edit.</div>
       </div>
     </div>
@@ -257,23 +277,23 @@
     <div class="dept-card">
       <div class="dept-num tnum">04</div>
       <div>
-        <div class="dept-title-row"><span class="dept-title">Social Media</span><span class="dept-with">with Candace Antezana</span></div>
-        <div class="dept-text">Creative owns <b>100% of the design and build</b> for DR's own social content, static posts and video alike, while Social Media focuses on strategy and scripting. Co-leading a creative direction shift with Social Media Manager Candace Antezana toward <b>authentic, trend-driven, influencer-style video</b> &mdash; now live: early posts under the new approach are averaging roughly <b>9&ndash;15&times; the engagement</b> of the prior static/carousel format (small sample so far, five to six posts per side, one standout video pulling the high end of that range).</div>
+        <div class="dept-title-row"><span class="dept-title">Social Media</span><span class="dept-with">with Candace Antezana</span><span class="ask-badge ask-badge--result">Client Result</span></div>
+        <div class="dept-text">Creative owns <b>100% of the design and build</b> for DR's own social content, static posts and video alike, while Social Media focuses on strategy and scripting. Co-leading a creative direction shift with Social Media Manager Candace Antezana toward <b>authentic, trend-driven, influencer-style video</b> &mdash; now live: early posts under the new approach are averaging roughly <b class="hl-result">9&ndash;15&times; the engagement</b> of the prior static/carousel format (small sample so far, five to six posts per side, one standout video pulling the high end of that range).</div>
       </div>
     </div>
 
     <div class="dept-card">
       <div class="dept-num tnum">05</div>
       <div>
-        <div class="dept-title-row"><span class="dept-title">Account Management</span></div>
-        <div class="dept-text">On call for client creative conversations &mdash; Dexter, Gaby, and Rich have all jumped directly onto client calls to unblock questions only a designer can answer; Gaby has done live on-the-spot logo revisions during a client call more than once. Turnaround/quoting consistency is actively being addressed through the Creative Dashboard's new individual designer views, calendar, and quote estimator, giving AMs real visibility instead of routing every timeline question through Rich. The Dashboard also gives Creative its first consistent, automatically-tracked revision-rate baseline: <b>4.3%</b> of completed tasks needed a revision round over the last 6 weeks (374 tasks). No reliable historical comparison exists prior to this, so this is the number we'll track going forward.</div>
+        <div class="dept-title-row"><span class="dept-title">Account Management</span><span class="ask-badge ask-badge--result">Client Result</span></div>
+        <div class="dept-text">On call for client creative conversations &mdash; Dexter, Gaby, and Rich have all jumped directly onto client calls to unblock questions only a designer can answer; Gaby has done live on-the-spot logo revisions during a client call more than once. Turnaround/quoting consistency is actively being addressed through the Creative Dashboard's new individual designer views, calendar, and quote estimator, giving AMs real visibility instead of routing every timeline question through Rich. The Dashboard also gives Creative its first consistent, automatically-tracked revision-rate baseline: <b class="hl-result">4.3%</b> of completed tasks needed a revision round over the last 6 weeks (374 tasks). No reliable historical comparison exists prior to this, so this is the number we'll track going forward.</div>
       </div>
     </div>
 
     <div class="dept-card">
       <div class="dept-num tnum">06</div>
       <div>
-        <div class="dept-title-row"><span class="dept-title">Web Team</span><span class="dept-with">with Julieta</span></div>
+        <div class="dept-title-row"><span class="dept-title">Web Team</span><span class="dept-with">with Julieta</span><span class="ask-badge ask-badge--pending">No Data Yet</span></div>
         <div class="dept-text">Same handoff partnership as Account Management: Creative designs the hi-fi homepage mockup, gets client sign-off, then Julieta's development team builds it out. The process is still being actively tuned &mdash; an added wireframe stage and a shift to Creative owning all internal pages were both tried and rolled back after they created bottlenecks, so there's no efficiency number to report yet. One concrete win along the way: Julieta publicly credited Gaby's work on the improved internal-page template (v2) as a real quality lift for the team.</div>
       </div>
     </div>
