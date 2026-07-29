@@ -166,6 +166,33 @@
   .dept-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
   .dept-text b { color: var(--ink); font-weight: 700; }
 
+  /* ===== SHAY'S QUESTIONS RECAP ===== */
+  .recap-card { background: var(--card); border-radius: 15px; padding: 20px 24px; box-shadow: var(--shadow); }
+  .recap-sub { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); margin: 0 0 12px; }
+  .recap-sub:not(:first-child) { margin-top: 22px; }
+  .recap-bars { display: flex; flex-direction: column; gap: 10px; }
+  .recap-bar-row { display: flex; align-items: center; gap: 12px; }
+  .recap-bar-label { width: 150px; font-size: 12px; font-weight: 700; color: var(--ink); flex-shrink: 0; }
+  .recap-bar-track { flex: 1; height: 22px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; position: relative; }
+  .recap-bar-track--pending { border-style: dashed; display: flex; align-items: center; padding-left: 12px; }
+  .recap-bar-fill { height: 100%; border-radius: 999px; display: flex; align-items: center; justify-content: flex-end; padding-right: 9px; background: var(--blue); }
+  .recap-bar-pct { font-size: 10px; font-weight: 800; color: #fff; }
+  .recap-bar-pending-txt { font-size: 10.5px; color: var(--faint); font-style: italic; }
+  .recap-bar-note { font-size: 10.5px; color: var(--faint); margin-top: 2px; }
+  .recap-status-list { display: flex; flex-direction: column; }
+  .recap-status-row { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+  .recap-status-row:last-child { border-bottom: none; }
+  .recap-status-label { width: 150px; font-size: 12px; font-weight: 700; color: var(--ink); flex-shrink: 0; }
+  .recap-status-pill { font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; flex-shrink: 0; }
+  .recap-status-pill--partial { background: rgba(246,147,30,0.14); color: #B96A0E; border: 1px solid rgba(246,147,30,0.35); }
+  .recap-status-pill--none { background: var(--paper); color: var(--faint); border: 1px dashed var(--line); }
+  .recap-status-detail { font-size: 11.5px; color: var(--muted); }
+  .recap-callout {
+    margin-top: 14px; background: rgba(246,147,30,0.08); border: 1px solid rgba(246,147,30,0.3);
+    border-radius: 15px; padding: 12px 16px; font-size: 12px; color: var(--ink); line-height: 1.55;
+  }
+  .recap-callout b { font-weight: 800; }
+
   /* ===== SHAY'S ASK: badges + highlights ===== */
   .ask-badge {
     display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9.5px;
@@ -266,6 +293,47 @@
       <div class="stat"><div class="stat-num tnum">4</div><div class="stat-lbl">Internal Tools Shipped</div></div>
       <div class="stat"><div class="stat-num tnum">~40%</div><div class="stat-lbl">Faster LP Builds Already</div></div>
     </div>
+  </div>
+
+  <div class="sec-label">Shay's Two Questions &mdash; Answered Directly</div>
+  <div class="recap-card">
+    <div class="recap-sub">Time Saved Outside Landing Pages</div>
+    <div class="recap-bars">
+      <div class="recap-bar-row">
+        <div class="recap-bar-label">Ads &amp; LPs</div>
+        <div class="recap-bar-track"><div class="recap-bar-fill" style="width:80%"><span class="recap-bar-pct">80%</span></div></div>
+      </div>
+      <div class="recap-bar-row">
+        <div class="recap-bar-label">Tech Ops</div>
+        <div class="recap-bar-track"><div class="recap-bar-fill" style="width:45%"><span class="recap-bar-pct">40&ndash;50%*</span></div></div>
+      </div>
+      <div class="recap-bar-row">
+        <div class="recap-bar-label">Social Media</div>
+        <div class="recap-bar-track"><div class="recap-bar-fill" style="width:100%"><span class="recap-bar-pct">100%</span></div></div>
+      </div>
+      <div class="recap-bar-row">
+        <div class="recap-bar-label">Account Mgmt</div>
+        <div class="recap-bar-track recap-bar-track--pending"><span class="recap-bar-pending-txt">Not yet measured</span></div>
+      </div>
+      <div class="recap-bar-row">
+        <div class="recap-bar-label">Web Team</div>
+        <div class="recap-bar-track recap-bar-track--pending"><span class="recap-bar-pending-txt">Not yet measured</span></div>
+      </div>
+      <div class="recap-bar-row">
+        <div class="recap-bar-label">SEO</div>
+        <div class="recap-bar-track recap-bar-track--pending"><span class="recap-bar-pending-txt">Not yet measured</span></div>
+      </div>
+    </div>
+    <div class="recap-bar-note">*Tech Ops range covers MVP-handoff tools (estimated, unverified). Tools Creative builds fully in-house cost Tech Ops zero build time (100%).</div>
+
+    <div class="recap-sub">Measurable Client Results (LPs &amp; Ad Creative)</div>
+    <div class="recap-status-list">
+      <div class="recap-status-row"><div class="recap-status-label">Ads &amp; LPs</div><span class="recap-status-pill recap-status-pill--none">Not Yet</span><div class="recap-status-detail">No conversion/CPL data tied to the templates or ad creative yet.</div></div>
+      <div class="recap-status-row"><div class="recap-status-label">Social Media</div><span class="recap-status-pill recap-status-pill--partial">Partial</span><div class="recap-status-detail">9&ndash;15&times; engagement is DR's own channel, not a client campaign result.</div></div>
+      <div class="recap-status-row"><div class="recap-status-label">Account Mgmt</div><span class="recap-status-pill recap-status-pill--partial">Partial</span><div class="recap-status-detail">4.3% revision rate is an internal quality metric, not a client outcome.</div></div>
+      <div class="recap-status-row"><div class="recap-status-label">Tech Ops, Web, SEO</div><span class="recap-status-pill recap-status-pill--none">N/A</span><div class="recap-status-detail">Not client-facing performance metrics for these workstreams.</div></div>
+    </div>
+    <div class="recap-callout"><b>The one gap left:</b> real client campaign results (conversion rate, cost-per-lead) tied to the LP templates or ad creative. As Shay noted himself, that number has to come from whoever manages Ads/Content performance, not from Creative.</div>
   </div>
 
   <div class="sec-label">Department by Department</div>
