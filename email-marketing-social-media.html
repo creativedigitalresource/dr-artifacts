@@ -265,36 +265,44 @@
 </style>
 
 <style>
-  /* ===== EXTRA COMPONENTS: Email + Social pitch (built on the same tokens) ===== */
+  /* ===== EXTRA COMPONENTS: Email + Social corrected report (built on the same tokens) ===== */
   .case-card { background: var(--card); border-radius: 15px; padding: 24px 28px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; }
-  .case-card p { font-size: 13.5px; line-height: 1.7; color: var(--ink); margin: 0; max-width: 70ch; }
+  .case-card p { font-size: 13.5px; line-height: 1.7; color: var(--ink); margin: 0; max-width: 74ch; }
   .case-card p b { font-weight: 700; }
-  .pullquote { border-left: 3px solid var(--blue); background: var(--paper); border-radius: 10px; padding: 14px 20px; font-style: italic; font-size: 13.5px; line-height: 1.65; color: var(--muted); }
   .caveat-text { font-size: 11px; color: var(--faint); font-style: italic; margin: 0; }
 
-  .evidence-wrap { background: var(--card); border-radius: 15px; box-shadow: var(--shadow); overflow-x: auto; }
+  .data-wrap { background: var(--card); border-radius: 15px; box-shadow: var(--shadow); overflow-x: auto; }
   table.evidence { width: 100%; border-collapse: collapse; font-size: 12.5px; }
   table.evidence th { text-align: left; padding: 10px 16px; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); font-weight: 700; background: var(--paper); border-bottom: 1px solid var(--line); white-space: nowrap; }
   table.evidence td { padding: 9px 16px; border-bottom: 1px solid var(--line); color: var(--ink); font-variant-numeric: tabular-nums; }
   table.evidence tr:last-child td { border-bottom: none; }
   table.evidence td.svc { font-weight: 700; }
+  table.evidence td.num { text-align: right; }
+  table.evidence th.num { text-align: right; }
 
-  .search-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .search-row input { flex: 1; font-family: 'Inter Tight', system-ui, sans-serif; font-size: 13px; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }
-  .search-row input:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
-  .search-row .rowcount { font-size: 11.5px; color: var(--faint); white-space: nowrap; }
+  .opp-list { display: flex; flex-direction: column; gap: 8px; }
+  .opp-card { background: var(--card); border-radius: 15px; padding: 16px 24px; box-shadow: var(--shadow); border-left: 3px solid var(--orange); }
+  .opp-title-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+  .opp-name { font-size: 14.5px; font-weight: 800; color: var(--ink); }
+  .opp-meta { font-size: 11.5px; color: var(--faint); font-family: 'Inter Tight', system-ui, sans-serif; }
+  .opp-angle { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-  .client-wrap { background: var(--card); border-radius: 15px; box-shadow: var(--shadow); max-height: 460px; overflow-y: auto; overflow-x: auto; }
-  table.clients { width: 100%; border-collapse: collapse; font-size: 13px; }
-  table.clients thead th { position: sticky; top: 0; background: var(--paper); text-align: left; padding: 10px 16px; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); font-weight: 700; border-bottom: 1px solid var(--line); z-index: 1; }
-  table.clients tbody td { padding: 8px 16px; border-bottom: 1px solid var(--line); color: var(--ink); }
-  table.clients tbody tr:last-child td { border-bottom: none; }
-  table.clients tbody tr:hover { background: var(--paper); }
-  .ct-industry { color: var(--muted); font-size: 12px; }
+  .paired-list { display: flex; flex-direction: column; gap: 8px; }
+  .paired-card { background: var(--card); border-radius: 15px; padding: 14px 24px; box-shadow: var(--shadow); border-left: 3px solid var(--blue); display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .paired-name { font-size: 13.5px; font-weight: 800; color: var(--ink); min-width: 180px; }
+  .paired-meta { font-size: 12px; color: var(--muted); }
 
-  .ask-badge--signal { background: rgba(195,203,29,0.18); color: #6B7300; border: 1px solid rgba(195,203,29,0.45); }
-  @media (prefers-color-scheme: dark) { .ask-badge--signal { color: #D5DE23; } }
-  :root[data-theme="dark"] .ask-badge--signal { color: #D5DE23; }
+  .synergy-list { display: flex; flex-direction: column; gap: 8px; padding-left: 0; margin: 0; list-style: none; }
+  .synergy-list li { font-size: 13px; color: var(--muted); line-height: 1.6; padding-left: 20px; position: relative; }
+  .synergy-list li::before { content: "•"; position: absolute; left: 4px; color: var(--blue); font-weight: 800; }
+
+  .gtm-list { display: flex; flex-direction: column; gap: 10px; }
+  .gtm-item { display: flex; gap: 10px; font-size: 13px; color: var(--ink); line-height: 1.6; background: var(--card); border-radius: 15px; padding: 14px 18px; box-shadow: var(--shadow); }
+  .gtm-item .gtm-num { flex-shrink: 0; color: var(--orange); font-weight: 900; font-family: 'Montserrat', sans-serif; font-size: 14px; }
+
+  .limits-list { display: flex; flex-direction: column; gap: 6px; padding-left: 0; margin: 0; list-style: none; }
+  .limits-list li { font-size: 12px; color: var(--faint); line-height: 1.6; padding-left: 16px; position: relative; }
+  .limits-list li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
 </style>
 
 </head>
@@ -312,201 +320,126 @@
     <div class="masthead-blob masthead-blob--orange"></div>
     <div class="masthead-blob masthead-blob--blue"></div>
     <div class="masthead-blob masthead-blob--lime"></div>
-    <div class="eyebrow">Digital Resource &middot; Creative Team &middot; Cross-Sell Pitch &middot; July 2026</div>
+    <div class="eyebrow">Digital Resource &middot; Creative Team &middot; Corrected Report &middot; July 31, 2026</div>
     <h1>Bundle Email Marketing with <em>Social Media</em></h1>
-    <p>DR's single longest-retained Creative pairing of any kind. Tenure data plus 119 named Social Media clients who don't have it yet.</p>
+    <p>After removing three internal/operational projects from the client population, 5 of 8 genuine current Email Marketing clients (62.5%) already pair with Social Media &mdash; the strongest observed companion service, and a clear cross-sell path for the remaining 3.</p>
     <div class="stat-row">
-      <div class="stat"><div class="stat-num tnum">8/11</div><div class="stat-lbl">Bundled Email Clients Paired With Social Media</div></div>
-      <div class="stat"><div class="stat-num tnum">100%</div><div class="stat-lbl">Of Those 8 Pairings Still Active</div></div>
-      <div class="stat"><div class="stat-num tnum">54.4mo</div><div class="stat-lbl">Avg Tenure &mdash; DR's Longest Creative Pairing</div></div>
-      <div class="stat"><div class="stat-num tnum">119</div><div class="stat-lbl">Named Social Media Clients, No Email Marketing</div></div>
+      <div class="stat"><div class="stat-num tnum">5/8</div><div class="stat-lbl">Current Genuine Email Clients Paired With Social</div></div>
+      <div class="stat"><div class="stat-num tnum">62.5%</div><div class="stat-lbl">Social Media Adoption &mdash; DR's #1 Companion</div></div>
+      <div class="stat"><div class="stat-num tnum">80.4mo</div><div class="stat-lbl">Avg Tenure, Paired (vs. 46.3mo Unpaired)</div></div>
+      <div class="stat"><div class="stat-num tnum">3</div><div class="stat-lbl">Named Clients Ready For The Cross-Sell Today</div></div>
     </div>
   </div>
 
-  <div class="sec-label">The Business Case</div>
+  <div class="sec-label">Executive Summary</div>
   <div class="case-card">
-    <p>Of DR's 11 bundled Email Marketing clients, 8 are paired with Social Media &mdash; more than any other companion service. Every one of those 8 is still an active client today, averaging <b>54.4 months</b> of tenure. That's the longest average tenure of any Creative pairing at DR, ahead of Multimedia (40.3mo), IPM (42.3mo), and Graphic Design (15.1mo).</p>
-    <p><b>The pitch is simple:</b> clients already on Social Media are the best-evidenced fit for an Email Marketing add-on. We're not guessing at a companion service &mdash; this is the one pairing in DR's entire Creative lineup with a fully-active track record.</p>
-    <div class="pullquote">&ldquo;Every client we've ever paired Email Marketing with Social Media is still with us today, averaging over four and a half years of tenure. That's not a hypothesis &mdash; it's the best-performing bundle we have on record.&rdquo;</div>
-    <p style="font-size:12.5px;color:var(--muted);">Named targets: 119 current Social Media clients have no Email Marketing attached. 21 of them also carry Yext, DR's secondary companion signal for this pairing &mdash; the badged rows below are the strongest-fit leads to approach first.</p>
-    <p class="caveat-text">Improvado's own caveat: this is directional rather than causal, based on a small bundled cohort (11 clients, 8 in this pairing). The strongest evidence is 100% current-client retention across that cohort &mdash; not a fully audited churn-rate comparison.</p>
+    <p>Email Marketing paired with Social Media is a credible packaging and cross-sell opportunity. After removing the three internal projects, <b>5 of 8 current genuine Email Marketing clients (62.5%)</b> also have Social Media. This makes Social Media the <b>most common companion service</b> for Email Marketing; the next-most-common companion, Yext, appears with only <b>3 of 8 clients (37.5%)</b>.</p>
+    <p>The pairing also appears among established relationships. The five current clients with both services have an average observed tenure of <b>80.4 months</b> and a median of <b>71.4 months</b>, compared with <b>46.3 months average</b> and <b>47.7 months median</b> among the three current Email Marketing clients without Social Media. This is a positive retention signal, but the cohort is too small to conclude that the pairing caused longer tenure.</p>
+    <p class="caveat-text">The prior 8-of-11 result included three non-client operational/training projects. Removing those records changes the valid result to 5 of 8 current genuine clients.</p>
   </div>
 
-  <div class="sec-label">Improvado Source Data</div>
-  <div class="evidence-wrap">
+  <div class="sec-label">Corrected Client Picture</div>
+  <div class="data-wrap">
     <table class="evidence">
-      <thead><tr><th>Creative service</th><th>Clients</th><th>Standalone</th><th>Bundled</th><th>Bundled current</th><th>Avg tenure: standalone &rarr; bundled</th></tr></thead>
+      <thead><tr><th>Measure</th><th class="num">Corrected result</th></tr></thead>
       <tbody>
-        <tr><td class="svc">Email Marketing</td><td>12</td><td>1</td><td>11</td><td>100%</td><td>58.8 &rarr; 52.2 months</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="evidence-wrap" style="margin-top:8px;">
-    <table class="evidence">
-      <thead><tr><th>Creative service</th><th>Strongest companion</th><th>Evidence</th></tr></thead>
-      <tbody>
-        <tr><td class="svc">Email Marketing</td><td>Social Media, then Yext</td><td>Social Media appears with 8 of 11 bundled clients; all 8 current, avg 54.4mo</td></tr>
+        <tr><td>Genuine Email Marketing clients identified</td><td class="num">9</td></tr>
+        <tr><td>Current genuine Email Marketing clients</td><td class="num">8</td></tr>
+        <tr><td>Current clients with Email + Social Media</td><td class="num">5</td></tr>
+        <tr><td>Current clients with Email but not Social Media</td><td class="num">3</td></tr>
+        <tr><td>Former standalone Email client</td><td class="num">1</td></tr>
+        <tr><td>Email-to-Social pairing rate among current clients</td><td class="num">62.5%</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="sec-label">119 Social Media Clients With No Email Marketing</div>
-  <div class="ask-legend">Badge flags accounts that also carry Yext: <span class="ask-badge ask-badge--signal">+ Yext</span> &mdash; the strongest-fit leads.</div>
-  <div class="search-row">
-    <input type="text" id="client-filter" placeholder="Filter 119 clients by name or industry…">
-    <span class="rowcount" id="client-count">119 shown</span>
+  <div class="sec-label">Clients Currently Using Both Services</div>
+  <div class="paired-list">
+    <div class="paired-card"><div class="paired-name">Bagels With Deli</div><div class="paired-meta">Since Nov. 17, 2021 &middot; 56.4 months tenure</div></div>
+    <div class="paired-card"><div class="paired-name">DebtHelper</div><div class="paired-meta">Since Aug. 4, 2021 &middot; 59.9 months tenure</div></div>
+    <div class="paired-card"><div class="paired-name">Stretch Zone WPB</div><div class="paired-meta">Since Jun. 5, 2018 &middot; 97.8 months tenure</div></div>
+    <div class="paired-card"><div class="paired-name">Wafer World</div><div class="paired-meta">Since Nov. 11, 2016 &middot; 116.6 months tenure</div></div>
+    <div class="paired-card"><div class="paired-name">iTech Palm Beach</div><div class="paired-meta">Since Aug. 19, 2020 &middot; 71.4 months tenure</div></div>
   </div>
-  <div class="client-wrap">
-    <table class="clients">
-      <thead><tr><th>Client Name</th><th>Industry</th><th></th></tr></thead>
-      <tbody id="client-body">
-          <tr><td>Athens Dental Design</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Butura Oral and Dental Implant Surgery</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Cataloochee Dental Group</td><td class="ct-industry">General Dentistry</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Dale Pediatric Dentistry</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Ding A Ling Answering Service</td><td class="ct-industry">Answering Service</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Faircourt Dental (1+)(MD)</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>First Evangelical Lutheran Church(1)(MD)</td><td class="ct-industry">Church/Religious Organization</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Generational Dentistry (1)(MD)</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Georgetown Sedation Dentistry(1+)(TB)</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Gulfside Dental</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>High Springs Dental</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>La Cantera Dental Group</td><td class="ct-industry">General Dentistry</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Morgan Family Dental</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>North Rivers Dental</td><td class="ct-industry">Dentist</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Rapi Staffing</td><td class="ct-industry">Staffing</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Smalltown Dental</td><td class="ct-industry">Dental</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Smooth Sailing</td><td class="ct-industry">Dentist</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>The Vet Spot Veterinary Hospital (1)(MD)</td><td class="ct-industry">Veterinary</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>True Dental - Chattanooga</td><td class="ct-industry">General Dentistry</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Veterinary Solutions Servies</td><td class="ct-industry">Vet Consults</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>angela l simpson, dds</td><td class="ct-industry">General Dentistry</td><td><span class="ask-badge ask-badge--signal">+ Yext</span></td></tr>
-          <tr><td>Advanced Sedation Dentistry(1)(TB)</td><td class="ct-industry">Sedation Dentistry</td><td></td></tr>
-          <tr><td>Aloha Family Dentistry</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Andra Jewelry</td><td class="ct-industry">Jewelry</td><td></td></tr>
-          <tr><td>Apex Dental Care</td><td class="ct-industry">Dentist</td><td></td></tr>
-          <tr><td>Atlantic Family Dentistry(1)(TB)</td><td class="ct-industry">Dentist</td><td></td></tr>
-          <tr><td>Baitner Pediatric Dentistry(2)(MD)</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Barcode Enterprises(3)(MD)</td><td class="ct-industry">Scanners, mobile computers, and accessories from a variety of leading manufacturers</td><td></td></tr>
-          <tr><td>Beachside Dental</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Brian Rich DMD</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Budget Fence &amp; Gate Systems</td><td class="ct-industry">fence &amp; gate</td><td></td></tr>
-          <tr><td>Cali Tan(3)(MD)</td><td class="ct-industry">Tanning Salon</td><td></td></tr>
-          <tr><td>Campbell Station Dentistry</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Cashion Dental</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Douglas Dentistry</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>EDA Retail</td><td class="ct-industry">Retail</td><td></td></tr>
-          <tr><td>Endeavor Metals Group(2)(TB)</td><td class="ct-industry">Precious Metals</td><td></td></tr>
-          <tr><td>Family First Direct PC</td><td class="ct-industry">Medical</td><td></td></tr>
-          <tr><td>Gorilla Trades</td><td class="ct-industry">Finance</td><td></td></tr>
-          <tr><td>Humblebees Pediatric Dentistry</td><td class="ct-industry">Dentistry</td><td></td></tr>
-          <tr><td>Iron Mountain Plumbing and Air (1+)(MD)</td><td class="ct-industry">Plumbing &amp; HVAC</td><td></td></tr>
-          <tr><td>Legacy Financial Partners</td><td class="ct-industry">Financial Services</td><td></td></tr>
-          <tr><td>Marathon Ventures</td><td class="ct-industry">Health Care</td><td></td></tr>
-          <tr><td>Miguel Ferrer DDS PA(2)(TB)</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Mobility City Rio Grande</td><td class="ct-industry">Mobility Solutions Retail</td><td></td></tr>
-          <tr><td>Mobility City Sacramento</td><td class="ct-industry">Mobility Solutions Retail</td><td></td></tr>
-          <tr><td>Mobility City San Antonio</td><td class="ct-industry">Mobility Solutions Retail</td><td></td></tr>
-          <tr><td>Mobility City Springfield</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Albany</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Appleton Green Bay</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Boca Raton</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Chicago</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Cincinnati</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Coastal Alabama</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Denver</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Fort Myers</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Greenville</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Gwinnett County GA</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Howard County</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of King of Prussia</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Lakeland</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Lubbock</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of North Texas</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Omaha</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Orange County CA</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Phoenix</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of San Francisco</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Southern Maryland</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Southern Utah</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Mobility City of Westchester County</td><td class="ct-industry">Mobility City</td><td></td></tr>
-          <tr><td>Murray &amp; Associates</td><td class="ct-industry">Law</td><td></td></tr>
-          <tr><td>NovaGenix</td><td class="ct-industry">Anti-Aging / Wellness</td><td></td></tr>
-          <tr><td>O&#39;Hara Sprinkler</td><td class="ct-industry">Sprinkler</td><td></td></tr>
-          <tr><td>Omaha Drain(1+)(MD)</td><td class="ct-industry">Drain/Plumbing/Hvac</td><td></td></tr>
-          <tr><td>Park Place Dental</td><td class="ct-industry">Dentist</td><td></td></tr>
-          <tr><td>Patterson Charleston</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Pottstown Family &amp; Cosmetic Dentistry</td><td class="ct-industry">Healthcare</td><td></td></tr>
-          <tr><td>Prestige Dental Care</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Richard W Kaplan MD DDS</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>Seacrest Southwest</td><td class="ct-industry">Property Management</td><td></td></tr>
-          <tr><td>Stretch Zone Anaheim Hills</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>Stretch Zone Bakersfield</td><td class="ct-industry">Stretch Zone</td><td></td></tr>
-          <tr><td>Stretch Zone Fair Oaks</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>Stretch Zone Lincoln Heights</td><td class="ct-industry">Stretch Studio</td><td></td></tr>
-          <tr><td>Stretch Zone Lubbock</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>Stretch Zone Midland</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>Stretch Zone North Tallahassee</td><td class="ct-industry">Wellness</td><td></td></tr>
-          <tr><td>Stretch Zone Pensacola</td><td class="ct-industry">Wellness</td><td></td></tr>
-          <tr><td>Stretch Zone Scarsdale</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>Stretch Zone Union Square</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>StretchMed - Las Vegas</td><td class="ct-industry">StretchMed</td><td></td></tr>
-          <tr><td>StretchMed Andover</td><td class="ct-industry">Stretching</td><td></td></tr>
-          <tr><td>StretchMed Arlington</td><td class="ct-industry">Stretching</td><td></td></tr>
-          <tr><td>StretchMed Braintree</td><td class="ct-industry">SMed</td><td></td></tr>
-          <tr><td>StretchMed Cambridge</td><td class="ct-industry">Stretching</td><td></td></tr>
-          <tr><td>StretchMed Carmel</td><td class="ct-industry">Stretching</td><td></td></tr>
-          <tr><td>StretchMed Cypress</td><td class="ct-industry">SMed</td><td></td></tr>
-          <tr><td>StretchMed East Greenwich, RI</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>StretchMed Easton, MD</td><td class="ct-industry">Assisted Stretching</td><td></td></tr>
-          <tr><td>StretchMed Five Forks, SC</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>StretchMed Franklin</td><td class="ct-industry">StretchMed</td><td></td></tr>
-          <tr><td>StretchMed Gambrills(2)(MD)</td><td class="ct-industry">SMED</td><td></td></tr>
-          <tr><td>StretchMed Glendale</td><td class="ct-industry">StretchMED</td><td></td></tr>
-          <tr><td>StretchMed Hoboken</td><td class="ct-industry">Stretching</td><td></td></tr>
-          <tr><td>StretchMed Holmdel(3)(MD)</td><td class="ct-industry">SMED</td><td></td></tr>
-          <tr><td>StretchMed Kent Island</td><td class="ct-industry">StretchMed</td><td></td></tr>
-          <tr><td>StretchMed Marlborough</td><td class="ct-industry">StrechMED</td><td></td></tr>
-          <tr><td>StretchMed Medford</td><td class="ct-industry">Stretching</td><td></td></tr>
-          <tr><td>StretchMed Napa</td><td class="ct-industry">StrechMED</td><td></td></tr>
-          <tr><td>StretchMed New Haven, CT</td><td class="ct-industry">Strech</td><td></td></tr>
-          <tr><td>StretchMed San Juan, PR</td><td class="ct-industry">Strech</td><td></td></tr>
-          <tr><td>StretchMed Stamford, CT</td><td class="ct-industry">Assisted Stretching</td><td></td></tr>
-          <tr><td>StretchMed Sudbury MA</td><td class="ct-industry">StretchMed</td><td></td></tr>
-          <tr><td>StretchMed Westford</td><td class="ct-industry">StretchMED</td><td></td></tr>
-          <tr><td>StretchZone WPB</td><td class="ct-industry">Stretch</td><td></td></tr>
-          <tr><td>Stretchzone Cypress</td><td class="ct-industry">Stretch Zone</td><td></td></tr>
-          <tr><td>Sunrise Orthodontics</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>West Mill Smiles(2)(TB)</td><td class="ct-industry">Dental</td><td></td></tr>
-          <tr><td>iPolish</td><td class="ct-industry">Nail Polish</td><td></td></tr>
+
+  <div class="sec-label">Immediate Cross-Sell Opportunity</div>
+  <div class="ask-legend">These 3 accounts represent the visible 37.5% adoption gap within the current Email Marketing client base.</div>
+  <div class="opp-list">
+    <div class="opp-card">
+      <div class="opp-title-row"><span class="opp-name">BlueTeam</span><span class="opp-meta">Since Aug. 10, 2022 &middot; 47.7 months tenure</span></div>
+      <div class="opp-angle">Add coordinated social distribution and content reuse to an established multi-service relationship</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-title-row"><span class="opp-name">Petplaybook.ai</span><span class="opp-meta">Since Jun. 8, 2026 &middot; 1.7 months tenure</span></div>
+      <div class="opp-angle">Introduce the bundle during onboarding while channel planning is still being established</div>
+    </div>
+    <div class="opp-card">
+      <div class="opp-title-row"><span class="opp-name">Xtreme Clean Powerwash</span><span class="opp-meta">Since Feb. 14, 2019 &middot; 89.5 months tenure</span></div>
+      <div class="opp-angle">Offer Social Media as an expansion to a mature but relatively narrow service mix</div>
+    </div>
+  </div>
+
+  <div class="sec-label">Why The Pairing Is An Opportunity</div>
+  <div class="case-card">
+    <p><b>1. It is already the dominant Email Marketing companion.</b> Social Media appears with 62.5% of current genuine Email Marketing clients &mdash; no other companion service is as common. This makes Email + Social the most repeatable observed package, rather than a one-off combination.</p>
+  </div>
+  <div class="data-wrap" style="margin-top:8px;">
+    <table class="evidence">
+      <thead><tr><th>Companion service</th><th class="num">Current Email clients</th><th class="num">Adoption</th></tr></thead>
+      <tbody>
+        <tr><td class="svc">Social Media</td><td class="num">5</td><td class="num">62.5%</td></tr>
+        <tr><td class="svc">Yext</td><td class="num">3</td><td class="num">37.5%</td></tr>
+        <tr><td class="svc">Facebook Ads</td><td class="num">2</td><td class="num">25.0%</td></tr>
+        <tr><td class="svc">Google Ads</td><td class="num">2</td><td class="num">25.0%</td></tr>
+        <tr><td class="svc">Website Maintenance</td><td class="num">2</td><td class="num">25.0%</td></tr>
       </tbody>
     </table>
   </div>
+  <div class="case-card" style="margin-top:8px;">
+    <p><b>2. The channels reinforce one another.</b> Social Media provides recurring content, reach, and audience interaction. Email converts that activity into an owned relationship that can be nurtured repeatedly. Together, the services can support:</p>
+    <ul class="synergy-list">
+      <li>Repurposing social content into newsletters and lifecycle messages.</li>
+      <li>Turning social followers and campaign traffic into email subscribers.</li>
+      <li>Coordinating promotions and calls to action across both channels.</li>
+      <li>Using email engagement to guide future social topics and creative.</li>
+      <li>Building one shared content calendar instead of two disconnected programs.</li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--muted);">The commercial value is therefore broader than adding another channel: the bundle can make both services easier to sustain and more useful to the client.</p>
+  </div>
+  <div class="case-card" style="margin-top:8px;">
+    <p><b>3. The paired accounts are established relationships.</b> The five paired clients average 80.4 months of observed tenure, versus 46.3 months for the three current Email-only/non-Social clients. The paired group also averages <b>4.8 enabled services</b>, showing that Email + Social often sits inside broader, embedded client relationships.</p>
+    <p class="caveat-text">This supports using the pairing as an account-expansion and retention hypothesis. It does not prove causation; client age, budget, maturity, and the presence of other services may contribute to the difference.</p>
+  </div>
+
+  <div class="sec-label">Recommended Go-To-Market Approach</div>
+  <div class="ask-legend">Position the offer as a coordinated content-to-inbox package, not as two separate retainers.</div>
+  <div class="gtm-list">
+    <div class="gtm-item"><span class="gtm-num">1</span><span>Start with the three current Email Marketing clients that do not have Social Media.</span></div>
+    <div class="gtm-item"><span class="gtm-num">2</span><span>Offer a 90-day pilot built around one shared campaign calendar.</span></div>
+    <div class="gtm-item"><span class="gtm-num">3</span><span>Reuse the strongest social themes in email and create email signup paths from social activity.</span></div>
+    <div class="gtm-item"><span class="gtm-num">4</span><span>Track list growth, email clicks, social engagement, social-to-email signups, qualified leads, and service expansion.</span></div>
+    <div class="gtm-item"><span class="gtm-num">5</span><span>Use the five existing paired clients as case-study candidates once channel-level performance is reviewed.</span></div>
+  </div>
+
+  <div class="closing">
+    After correcting the client population, the opportunity remains meaningful: <b>5 of 8 current genuine Email Marketing clients already use Social Media</b>, making it the strongest observed companion service. The remaining three current Email clients form a clear cross-sell audience. The best next step is a focused pilot and performance review, not a blanket claim that the bundle guarantees retention.
+  </div>
+
+  <div class="sec-label">Methodology &amp; Limitations</div>
+  <ul class="limits-list">
+    <li>Service status was based on enabled services in the current and archived client-project records.</li>
+    <li>The three known operational/training projects were excluded manually because they were not classified as internal in the source data.</li>
+    <li>Tenure is measured from the recorded project start through July 31, 2026 for current clients.</li>
+    <li>Only one former genuine Email Marketing client was identifiable, and that client had Email as a standalone service &mdash; insufficient for a reliable churn comparison.</li>
+    <li>The analysis measures observed association and packaging prevalence; it does not establish causal lift in retention, revenue, leads, or campaign performance.</li>
+  </ul>
 
   <div class="foot">
     <div class="foot-brand"><img src="data:image/webp;base64,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" alt="Digital Resource"></div>
-    <div class="foot-src">Sources: Improvado tenure/retention analysis (Email Marketing) &middot; DR Master Client List (583 live clients) &middot; Creative Team, July 2026</div>
+    <div class="foot-src">Reporting date: July 31, 2026 &middot; Creative Team, Digital Resource</div>
   </div>
 
 </div>
-
-
-<script>
-const filterInput = document.getElementById('client-filter');
-const countLabel = document.getElementById('client-count');
-const body = document.getElementById('client-body');
-
-filterInput.addEventListener('input', () => {
-  const q = filterInput.value.trim().toLowerCase();
-  let shown = 0;
-  body.querySelectorAll('tr').forEach(tr => {
-    const match = tr.textContent.toLowerCase().includes(q);
-    tr.style.display = match ? '' : 'none';
-    if (match) shown++;
-  });
-  countLabel.textContent = shown + ' shown';
-});
-</script>
 
 </body>
 </html>
