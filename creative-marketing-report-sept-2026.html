@@ -529,11 +529,11 @@
           <div class="savings-amt neutral">6</div>
         </div>
         <div class="savings-row">
-          <div class="savings-label">Non-marketable — never turned on as a marketing contact; no opt-out or bounce on file (the only real reactivatable pool)</div>
+          <div class="savings-label">Non-marketable — never turned on as a marketing contact; no opt-out or bounce on file (phased reactivation planned)</div>
           <div class="savings-amt neutral">~27,530</div>
         </div>
       </div>
-      <div class="funnel-note" style="margin-top:12px;">Marketing-contact status is a HubSpot billing tier, not a consent flag — a contact can sit non-marketable without ever having opted out. The ~27,530 above are the only realistic lever to close the 48,576-vs-15,535 gap, and turning them on requires two things first: (1) confirming the cost against our HubSpot marketing-contacts tier, since it would likely push us over our current plan, and (2) accepting the deliverability risk of mailing a large segment that never opted in — which is the exact problem the 2026 hard-bounce cleanup above was fixing, and could undo it.</div>
+      <div class="funnel-note" style="margin-top:12px;">Marketing-contact status is a HubSpot billing tier, not a consent flag — a contact can sit non-marketable without ever having opted out. 98.4% of this pool came in through a Salesforce sync (sales-sourced prospects, not a purchased list), so CAN-SPAM allows us to email them without prior opt-in as long as we identify the message as an ad and honor opt-outs. Plan: reactivate in phased batches (starting ~1,000–2,000), watching bounce/spam-complaint rates before scaling further, and confirming with Sales that a batch isn't mid-outreach before we enable it — protects the deliverability gains from the 2026 hard-bounce cleanup above.</div>
     </div>
 
     <div class="glass funnel-panel">
