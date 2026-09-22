@@ -199,6 +199,46 @@
   .funnel-health b{ color:#fff; font-variant-numeric: tabular-nums; }
   .funnel-note{ margin-left:auto; font-style:italic; opacity:0.8; }
 
+  /* ---------- status banner (elevated, not fine print) ---------- */
+  .status-banner{
+    display:flex; align-items:flex-start; gap:16px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(246,147,30,0.16), rgba(246,147,30,0.05));
+    border: 1px solid rgba(246,147,30,0.4);
+  }
+  .status-banner .badge{
+    flex:none;
+    font-size: 11px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase;
+    color:#ffb65c;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: rgba(246,147,30,0.18);
+    border: 1px solid rgba(246,147,30,0.4);
+    white-space:nowrap;
+  }
+  .status-banner .txt{ font-size:13.5px; color: var(--ink); line-height:1.55; }
+  .status-banner .txt b{ color:#fff; }
+
+  /* ---------- data table ---------- */
+  .data-table-wrap{ margin-top:18px; }
+  .data-table-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .data-table-head h4{ margin:0; font-size:13.5px; font-weight:700; color:#fff; }
+  table.data-table{ width:100%; border-collapse:collapse; font-size:12.5px; }
+  table.data-table th, table.data-table td{
+    padding: 9px 10px; text-align:right; white-space:nowrap;
+  }
+  table.data-table th:first-child, table.data-table td:first-child{ text-align:left; }
+  table.data-table thead th{
+    color: var(--ink-dim); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; font-size:10.5px;
+    border-bottom: 1px solid var(--glass-bd);
+  }
+  table.data-table tbody td{ color:#fff; border-bottom: 1px solid rgba(255,255,255,0.06); font-variant-numeric: tabular-nums; }
+  table.data-table tbody tr:last-child td{ border-bottom:none; }
+  table.data-table tbody tr.ytd-row td{ border-top: 2px solid rgba(213,222,35,0.35); font-weight:800; color: var(--lime); padding-top:11px; }
+  table.data-table .dim{ color: var(--ink-dim); font-weight:400; }
+
   /* ---------- savings panel ---------- */
   .savings-panel{ margin-top: 16px; padding: 26px 28px 24px; }
   .savings-rows{ display:flex; flex-direction:column; gap:14px; }
@@ -469,9 +509,15 @@
 
     <div class="glass funnel-panel">
       <div class="funnel-head">
-        <h3>Email Performance — DR House Marketing Emails</h3>
+        <h3>Email Performance — Digital Resource Marketing Emails</h3>
         <span class="hint">Jan 1 – Sep 21, 2026 · HubSpot, portal-wide</span>
       </div>
+
+      <div class="status-banner">
+        <span class="badge">Behind Pace</span>
+        <div class="txt"><b>Cooling Drip rollout is behind schedule.</b> Two new segments (2,500 + 12,667 = 15,167 marketable contacts) were staged Aug 24–27 to expand the drip beyond its original list — send-out hasn't caught up yet because DR's own marketing shares the same queue as paying client email work. Finishing the rollout is the plan for the rest of Q4. Full detail in the Contactable List panel and Action Plan below.</div>
+      </div>
+
       <div class="funnel-row">
         <div class="funnel-step">
           <span class="fnum">34,535</span>
@@ -503,6 +549,31 @@
         <span><b>36</b> spam reports</span>
         <span class="funnel-note">Open/click rates exclude bot traffic</span>
       </div>
+
+      <div class="data-table-wrap">
+        <div class="data-table-head">
+          <h4>34,535 Isn't a September Number — Sends by Month</h4>
+          <span class="hint">All DR marketing emails vs. the Cooling Drip subset</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Month</th><th>All Emails Sent</th><th>Cooling Drip Sent</th><th>Open Rate</th><th>Hard Bounces</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Jan</td><td>5,810</td><td class="dim">524</td><td>22.3%</td><td>14</td></tr>
+            <tr><td>Feb</td><td>2,289</td><td class="dim">1,946</td><td>7.5%</td><td>57</td></tr>
+            <tr><td>Mar</td><td>2,945</td><td class="dim">2,771</td><td>4.9%</td><td>29</td></tr>
+            <tr><td>Apr</td><td>7,340</td><td class="dim">3,135</td><td>19.0%</td><td>75</td></tr>
+            <tr><td>May</td><td>6,017</td><td class="dim">3,013</td><td>20.6%</td><td>45</td></tr>
+            <tr><td>Jun</td><td>1,356</td><td class="dim">1,302</td><td>12.0%</td><td>23</td></tr>
+            <tr><td>Jul</td><td>1,498</td><td class="dim">418</td><td>15.3%</td><td>26</td></tr>
+            <tr><td>Aug</td><td>4,122</td><td class="dim">2,234</td><td>12.8%</td><td>13</td></tr>
+            <tr><td>Sep (1–21, partial)</td><td>3,158</td><td class="dim">2,215</td><td>9.1%</td><td>18</td></tr>
+            <tr class="ytd-row"><td>YTD Total</td><td>34,535</td><td>17,558</td><td>15.8%</td><td>300</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="funnel-note" style="margin-top:12px; margin-left:0;">vs. same period 2025: 44,020 sent, 97.3% delivered, 16.5% open rate, 0.50% click rate, 1,050 hard bounces. Sending fewer, cleaner sends — hard bounces down 71% — at the cost of a slightly lower engagement rate.</div>
     </div>
 
