@@ -239,6 +239,30 @@
   table.data-table tbody tr.ytd-row td{ border-top: 2px solid rgba(213,222,35,0.35); font-weight:800; color: var(--lime); padding-top:11px; }
   table.data-table .dim{ color: var(--ink-dim); font-weight:400; }
 
+  /* ---------- creative gallery ---------- */
+  .creative-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .creative-card{ overflow:hidden; display:flex; flex-direction:column; }
+  .creative-card .thumb{
+    width:100%; aspect-ratio: 1 / 1; object-fit:cover; display:block;
+    background: rgba(255,255,255,0.04);
+  }
+  .creative-card .cbody{ padding: 14px 16px 16px; display:flex; flex-direction:column; gap:6px; }
+  .creative-card .ctag{
+    align-self:flex-start;
+    font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase;
+    padding:3px 9px; border-radius:100px;
+    background: rgba(38,169,225,0.18); color:#7fd4f6; border:1px solid rgba(38,169,225,0.3);
+  }
+  .creative-card h4{ margin:0; font-size:13.5px; font-weight:700; color:#fff; line-height:1.35; }
+  .creative-card p{ margin:0; font-size:12px; color: var(--ink-dim); line-height:1.5; }
+  .creative-card.wide{ grid-column: span 2; }
+  .creative-card.wide .thumb{ aspect-ratio: 16 / 9; }
+  @media (max-width:640px){ .creative-card.wide{ grid-column: span 1; } }
+
   /* ---------- savings panel ---------- */
   .savings-panel{ margin-top: 16px; padding: 26px 28px 24px; }
   .savings-rows{ display:flex; flex-direction:column; gap:14px; }
@@ -711,6 +735,57 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ================= CREATIVE EXAMPLES ================= -->
+  <section>
+    <div class="section-head">
+      <h2>Creative Examples</h2>
+      <span class="hint">A sample of live &amp; recent design work — DR's own marketing, 2026</span>
+    </div>
+
+    <div class="creative-grid">
+      <div class="glass creative-card">
+        <img class="thumb" src="images/automation-passive-revenue.jpg" alt="Automation is Passive Revenue social graphic">
+        <div class="cbody">
+          <span class="ctag">Social / Ads</span>
+          <h4>"Automation is Passive Revenue"</h4>
+          <p>DR-branded social ad creative promoting automation-driven lead recapture.</p>
+        </div>
+      </div>
+      <div class="glass creative-card">
+        <img class="thumb" src="images/strategy-cta-banner.gif" alt="Still Thinking About Your Digital Marketing Strategy CTA banner">
+        <div class="cbody">
+          <span class="ctag">Meta Ad Set</span>
+          <h4>"Still Thinking About Your Digital Marketing Strategy?"</h4>
+          <p>Animated CTA banner from the 2026 Meta ads set, driving strategy-call bookings.</p>
+        </div>
+      </div>
+      <div class="glass creative-card">
+        <img class="thumb" src="images/meet-the-magic-makers.jpg" alt="Meet the Magic Makers team graphic">
+        <div class="cbody">
+          <span class="ctag">Internal / Team</span>
+          <h4>"Meet the Magic Makers"</h4>
+          <p>Team-intro graphic designed for the Content team's roster — one of several cross-department pieces Creative builds.</p>
+        </div>
+      </div>
+      <div class="glass creative-card wide">
+        <img class="thumb" src="images/dream-team-wall-decal.jpg" alt="Dream Team office wall decal">
+        <div class="cbody">
+          <span class="ctag">Environmental Design</span>
+          <h4>"Dream Team" Office Wall Decal</h4>
+          <p>Full-wall installation for the SEO/AM team space — brand system extended off-screen, into the physical office.</p>
+        </div>
+      </div>
+      <div class="glass creative-card wide">
+        <img class="thumb" src="images/dr25-webstyle-guide.jpg" alt="DR25 Webstyle Guide">
+        <div class="cbody">
+          <span class="ctag">Design System</span>
+          <h4>DR25 Webstyle Guide</h4>
+          <p>Typography scale, header styles, buttons, icons, gradients, and imagery rules — the standard every DR web and ad asset above is built from.</p>
+        </div>
+      </div>
     </div>
   </section>
 
