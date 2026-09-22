@@ -506,6 +506,36 @@
       <div class="funnel-note" style="margin-top:12px; margin-left:0;">vs. same period 2025: 44,020 sent, 97.3% delivered, 16.5% open rate, 0.50% click rate, 1,050 hard bounces. Sending fewer, cleaner sends — hard bounces down 71% — at the cost of a slightly lower engagement rate.</div>
     </div>
 
+    <div class="glass savings-panel">
+      <div class="funnel-head">
+        <h3>Contactable List — Why Sends Don't Reach All 48,576</h3>
+        <span class="hint">HubSpot marketing-contact status, as of Sep 21, 2026</span>
+      </div>
+      <div class="savings-rows">
+        <div class="savings-row">
+          <div class="savings-label">Total contacts in HubSpot</div>
+          <div class="savings-amt neutral">48,576</div>
+        </div>
+        <div class="savings-row">
+          <div class="savings-label">Marketable — set as a marketing contact, the only status HubSpot allows to receive marketing email</div>
+          <div class="savings-amt">15,535</div>
+        </div>
+        <div class="savings-row">
+          <div class="savings-label">Non-marketable — opted out / unsubscribed (legally suppressed, can never be re-enabled)</div>
+          <div class="savings-amt neutral">5,505</div>
+        </div>
+        <div class="savings-row">
+          <div class="savings-label">Non-marketable — hard-bounced / invalid address</div>
+          <div class="savings-amt neutral">6</div>
+        </div>
+        <div class="savings-row">
+          <div class="savings-label">Non-marketable — never turned on as a marketing contact; no opt-out or bounce on file (the only real reactivatable pool)</div>
+          <div class="savings-amt neutral">~27,530</div>
+        </div>
+      </div>
+      <div class="funnel-note" style="margin-top:12px;">Marketing-contact status is a HubSpot billing tier, not a consent flag — a contact can sit non-marketable without ever having opted out. The ~27,530 above are the only realistic lever to close the 48,576-vs-15,535 gap, and turning them on requires two things first: (1) confirming the cost against our HubSpot marketing-contacts tier, since it would likely push us over our current plan, and (2) accepting the deliverability risk of mailing a large segment that never opted in — which is the exact problem the 2026 hard-bounce cleanup above was fixing, and could undo it.</div>
+    </div>
+
     <div class="glass funnel-panel">
       <div class="funnel-head">
         <h3>Lead Generation — Email</h3>
