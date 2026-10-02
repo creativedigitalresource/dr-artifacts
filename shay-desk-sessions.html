@@ -1,0 +1,402 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Shay Desk Sessions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --navy:#010f37;
+    --orange:#f6931e;
+    --blue:#26a9e1;
+    --lime:#d5de23;
+    --darkgray:#404041;
+
+    /* single committed light theme &mdash; no dark-mode flip, matches the real dashboard's always-light chrome */
+    --page-bg:#eef1f8;
+    --page-ink:#010f37;
+    --page-ink-soft:#404041;
+
+    --card-bg-a:rgba(255,255,255,.62);
+    --card-bg-b:rgba(255,255,255,.32);
+    --card-border:rgba(255,255,255,.65);
+    --card-ink:#010f37;
+    --card-ink-soft:#54595d;
+    --line:rgba(1,15,55,.12);
+    --shadow:0 1px 2px rgba(1,15,55,.06), 0 24px 44px -26px rgba(1,15,55,.28);
+
+    --blob-orange:rgba(246,147,30,.55);
+    --blob-blue:rgba(38,169,225,.5);
+    --blob-lime:rgba(213,222,35,.5);
+
+    --highlight-bg:var(--lime);
+    --highlight-ink:var(--navy);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{background:var(--page-bg);}
+  body{
+    color:var(--page-ink);
+    font-family:'Inter Tight',system-ui,-apple-system,sans-serif;
+    padding-inline:20px;
+    padding-block:40px 72px;
+    max-width:960px;
+    margin-inline:auto;
+    position:relative;
+    isolation:isolate;
+  }
+
+  /* gradient blob field, DR "circle fade" decorative background &mdash; bold enough to read through the glass */
+  .blobs{position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;}
+  .blobs i{position:absolute; border-radius:50%; filter:blur(70px);}
+  .blob-1{width:620px; height:620px; background:var(--blob-orange); top:-240px; right:-200px;}
+  .blob-2{width:680px; height:680px; background:var(--blob-blue); bottom:-280px; left:-260px;}
+  .blob-3{width:420px; height:420px; background:var(--blob-lime); top:32%; right:8%;}
+
+  h1,h2,h3,h4{font-family:'Inter Tight',sans-serif; text-wrap:balance; margin:0;}
+  .eyebrow{
+    font-size:.72rem; letter-spacing:.11em; text-transform:uppercase;
+    color:var(--page-ink-soft); font-weight:600;
+  }
+
+  /* DR full logo lockup (with tagline), header */
+  .lockup{height:78px; display:flex; align-items:center; margin-bottom:20px;}
+  .lockup img{height:100%; width:auto; display:block;}
+
+  /* DR wordmark (no tagline), footer */
+  .wordmark{height:32px; display:flex; align-items:center;}
+  .wordmark img{height:100%; width:auto; display:block;}
+
+  /* header */
+  .masthead{
+    display:flex; flex-direction:column;
+    padding-bottom:24px; margin-bottom:32px; border-bottom:2px solid var(--page-ink);
+  }
+  .masthead .title-row{
+    display:flex; flex-wrap:wrap; gap:20px 32px; align-items:flex-end; justify-content:space-between;
+  }
+  .masthead h1{font-size:clamp(1.6rem,4vw,2.15rem); font-weight:800; letter-spacing:-.01em;}
+  .masthead .sub{color:var(--page-ink-soft); font-size:.95rem; margin-top:8px; max-width:48ch;}
+  .cadence-pill{
+    display:flex; align-items:center; gap:8px;
+    background:var(--lime); color:var(--navy);
+    border-radius:100px; padding:10px 18px;
+    font-size:.78rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .cadence-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--navy);}
+
+  /* legend */
+  .legend{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px;}
+  .legend span{
+    display:flex; align-items:center; gap:7px; font-size:.78rem; font-weight:600;
+    color:var(--page-ink-soft); background:color-mix(in srgb, var(--page-bg) 70%, transparent);
+    border:1px solid var(--line); padding:6px 12px; border-radius:100px;
+  }
+  .swatch{width:9px;height:9px;border-radius:50%; flex:none;}
+
+  section{margin-bottom:48px;}
+  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:18px;}
+  .section-head h2{font-size:1.1rem; font-weight:700; color:var(--page-ink);}
+  .section-head .rule{flex:1; height:1px; background:var(--line);}
+
+  /* glass card base */
+  .glass{
+    background:linear-gradient(160deg, var(--card-bg-a), var(--card-bg-b));
+    backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+    border:1px solid var(--card-border);
+    border-radius:15px;
+    box-shadow:var(--shadow);
+    color:var(--card-ink);
+  }
+
+  /* big picture cards */
+  .overview{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:640px){.overview{grid-template-columns:1fr;}}
+  .ov-card{padding:22px 24px; position:relative; overflow:hidden;}
+  .ov-card .date{font-size:.76rem; color:var(--orange); font-weight:700; letter-spacing:.06em; text-transform:uppercase;}
+  .ov-card h3{font-size:1.2rem; margin-top:6px; font-weight:700; color:var(--card-ink);}
+  .ov-card p{color:var(--card-ink-soft); font-size:.9rem; margin:10px 0 18px; max-width:40ch;}
+  .mixbar{display:flex; height:9px; border-radius:100px; overflow:hidden; margin-bottom:8px; background:var(--line);}
+  .mixbar span{display:block;}
+  .mix-label{display:flex; justify-content:space-between; font-size:.74rem; font-weight:600; color:var(--card-ink-soft);}
+
+  /* call sheet rows */
+  .callsheet{overflow:hidden;}
+  .row{
+    display:grid; grid-template-columns:36px 1fr; gap:16px;
+    padding:18px 22px; border-bottom:1px solid var(--line);
+  }
+  .row:last-child{border-bottom:none;}
+  .slate{font-size:.9rem; font-weight:700; color:var(--card-ink-soft); padding-top:2px;}
+  .row-top{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:7px;}
+  .tag{
+    font-size:.66rem; letter-spacing:.07em; text-transform:uppercase;
+    padding:4px 10px; border-radius:100px; font-weight:700;
+  }
+  .tag.leadership{background:var(--orange); color:#fff;}
+  .tag.marketing{background:var(--blue); color:#fff;}
+  .tag.culture{background:var(--lime); color:var(--navy);}
+  .row h4{font-size:1.03rem; font-weight:700; color:var(--card-ink); margin:0;}
+  .row .why{color:var(--card-ink-soft); font-size:.87rem; margin-top:6px; max-width:60ch;}
+
+  /* playbook checklist */
+  .playbook{display:grid; gap:12px;}
+  .pb-item{
+    display:grid; grid-template-columns:30px 1fr; gap:14px;
+    padding:15px 18px;
+  }
+  .pb-item .num{
+    width:26px; height:26px; border-radius:50%; background:var(--orange); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:700;
+  }
+  .pb-item strong{color:var(--card-ink); font-weight:700; font-size:.95rem;}
+  .pb-item p{margin:3px 0 0; font-size:.87rem; color:var(--card-ink-soft);}
+
+  /* gap callout &mdash; DR lime highlight-box technique */
+  .callout{
+    border-radius:15px; padding:18px 22px;
+    background:var(--highlight-bg); color:var(--highlight-ink);
+    display:flex; gap:14px; align-items:flex-start;
+  }
+  .callout .flag{font-weight:800; font-size:.95rem;}
+  .callout p{margin:0; font-size:.9rem;}
+  .callout strong{font-weight:800;}
+
+  /* avoid-repeat strip */
+  .chipwrap{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-size:.78rem; font-weight:500; color:var(--page-ink-soft);
+    background:color-mix(in srgb, var(--page-bg) 60%, transparent);
+    border:1px solid var(--line); border-radius:100px; padding:6px 13px;
+  }
+
+  footer{
+    margin-top:12px; padding-top:20px; border-top:1px solid var(--line);
+    font-size:.8rem; color:var(--page-ink-soft);
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px 8px;
+  }
+</style>
+
+<div class="blobs" aria-hidden="true"><i class="blob-1"></i><i class="blob-2"></i><i class="blob-3"></i></div>
+
+<div class="masthead">
+  <div class="lockup">
+    <img src="images/dr-logo-tagline.png" alt="Digital Resource &mdash; Your resource for everything digital">
+  </div>
+  <div class="title-row">
+    <div>
+      <h1>Shay Desk Sessions &mdash; 2-Week Plan</h1>
+      <div class="sub">Same setup, same chair. The strategy lives in what we ask and the order we ask it &mdash; not the visuals.</div>
+    </div>
+    <div class="cadence-pill"><span class="dot"></span> Biweekly &middot; 5+ questions / session</div>
+  </div>
+</div>
+
+<div class="legend">
+  <span><i class="swatch" style="background:var(--orange)"></i>Leadership &amp; Agency Insights</span>
+  <span><i class="swatch" style="background:var(--blue)"></i>Marketing &amp; Services</span>
+  <span><i class="swatch" style="background:var(--lime)"></i>Team &amp; Culture</span>
+</div>
+
+<section>
+  <div class="section-head"><h2>Big picture</h2><div class="rule"></div></div>
+  <div class="overview">
+    <div class="ov-card glass">
+      <div class="date">Session 01 &middot; 10/06</div>
+      <h3>"The reality behind the agency"</h3>
+      <p>Opens and closes on Team &amp; Culture, builds through story and stakes, and picks up a required Partner Program plug right before the close &mdash; each question grows out of the last answer.</p>
+      <div class="mixbar">
+        <span style="width:33.4%;background:var(--orange)"></span>
+        <span style="width:33.3%;background:var(--blue)"></span>
+        <span style="width:33.3%;background:var(--lime)"></span>
+      </div>
+      <div class="mix-label"><span>2 Leadership</span><span>2 Marketing</span><span>2 Culture</span></div>
+    </div>
+    <div class="ov-card glass">
+      <div class="date">Session 02 &middot; TBD</div>
+      <h3>"Hot takes &amp; what we'd actually do"</h3>
+      <p>Stays in confident, tactical territory through the middle with one Team &amp; Culture breather, then zooms out to a principle and closes on a personal what-if.</p>
+      <div class="mixbar">
+        <span style="width:40%;background:var(--orange)"></span>
+        <span style="width:40%;background:var(--blue)"></span>
+        <span style="width:20%;background:var(--lime)"></span>
+      </div>
+      <div class="mix-label"><span>2 Leadership</span><span>2 Marketing</span><span>1 Culture</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>Session 01 &mdash; shoot order</h2><div class="rule"></div></div>
+  <div class="callsheet glass">
+    <div class="row">
+      <div class="slate">01</div>
+      <div>
+        <div class="row-top"><span class="tag culture">Team &amp; Culture</span></div>
+        <h4>What's One Habit From Your First Job You Still Can't Shake?</h4>
+        <p class="why">True icebreaker &mdash; zero stakes, genuinely fun, no "expert mode" needed. Gets him laughing and talking before anything personal or business-related comes up.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">02</div>
+      <div>
+        <div class="row-top"><span class="tag leadership">Leadership</span></div>
+        <h4>What's the Worst Business Advice You've Ever Received?</h4>
+        <p class="why">Stays in story mode from the icebreaker, just shifts the story from personal quirk to a business anecdote &mdash; still fun and low-stakes.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">03</div>
+      <div>
+        <div class="row-top"><span class="tag leadership">Leadership</span></div>
+        <h4>What I've Learned From Watching Businesses Fail</h4>
+        <p class="why">Bridges naturally off the last answer &mdash; "since we're on bad calls and mistakes..." &mdash; and deepens from one funny story into a real pattern.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">04</div>
+      <div>
+        <div class="row-top"><span class="tag marketing">Marketing</span></div>
+        <h4>What Happens If You Stop Marketing Completely?</h4>
+        <p class="why">Same thread, higher stakes &mdash; failure he's observed in others becomes a direct cautionary consequence. Still expertise-backed, not yet personal.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">05</div>
+      <div>
+        <div class="row-top"><span class="tag marketing">Marketing</span></div>
+        <h4>What Is the Digital Resource Partner Program, and Who Should Use It?</h4>
+        <p class="why">Required deliverable (Basecamp #8156787211, originally due 9/22, carried over through the reschedule) for the Partner Program page &mdash; bridges off "what if you stop marketing": a lot of DR's own growth comes from partner referrals, not spend. Placed pre-closer so it doesn't interrupt the personal ending.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">06</div>
+      <div>
+        <div class="row-top"><span class="tag culture">Team &amp; Culture</span></div>
+        <h4>What's Something You Believed About Running a Business Before You Started That Turned Out to Be Completely Wrong?</h4>
+        <p class="why">Closer &mdash; the flip side of "what if you stop": a genuine, unscripted moment of reflection. Trust is built by now, so it lands honest, not guarded.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>Session 02 &mdash; shoot order</h2><div class="rule"></div></div>
+  <div class="callsheet glass">
+    <div class="row">
+      <div class="slate">01</div>
+      <div>
+        <div class="row-top"><span class="tag marketing">Marketing</span></div>
+        <h4>If I Could Only Invest in One Marketing Channel, What Would It Be?</h4>
+        <p class="why">Confident, opinionated opener &mdash; a forced choice he can answer instantly, no wind-up needed. Sets a fast, tactical tone.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">02</div>
+      <div>
+        <div class="row-top"><span class="tag marketing">Marketing</span></div>
+        <h4>What's the Biggest Website Mistake You See Businesses Make?</h4>
+        <p class="why">Stays in the same tactical headspace as Q1 &mdash; channel picks and mistakes to avoid are the same conversation, not a topic change.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">03</div>
+      <div>
+        <div class="row-top"><span class="tag culture">Team &amp; Culture</span></div>
+        <h4>What's a Trend &mdash; Marketing or Otherwise &mdash; You Just Don't Get?</h4>
+        <p class="why">Natural bridge after two tactical questions &mdash; same headspace, lighter energy, still on-topic. A breather before the conversation zooms out.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">04</div>
+      <div>
+        <div class="row-top"><span class="tag leadership">Leadership</span></div>
+        <h4>The Fastest Growing Businesses All Have This in Common</h4>
+        <p class="why">Zooms out from specific tactics to the underlying principle &mdash; a natural "step back and look at the pattern" moment.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slate">05</div>
+      <div>
+        <div class="row-top"><span class="tag leadership">Leadership</span></div>
+        <h4>What Would I Do If I Had to Start Over With Zero Clients?</h4>
+        <p class="why">Closer &mdash; after establishing expertise and a big-picture principle, this hypothetical lands as a personal, reflective capstone instead of an early guess.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><h2>Day-of playbook</h2><div class="rule"></div></div>
+  <div class="playbook glass" style="padding:8px;">
+    <div class="pb-item">
+      <div class="num">1</div>
+      <div><strong>60 seconds off-camera before Q1 rolls</strong><p>Chat about anything not on the list first. Nobody's first take of the day should be their real first answer &mdash; warm up his voice and energy before it's being recorded.</p></div>
+    </div>
+    <div class="pb-item">
+      <div class="num">2</div>
+      <div><strong>One continuous take per question</strong><p>No interrupting for a redo. Keeps the low-lift setup and the natural energy that makes desk UGC work.</p></div>
+    </div>
+    <div class="pb-item">
+      <div class="num">3</div>
+      <div><strong>Bridge out loud instead of jumping to the next question cold</strong><p>A one-line connector &mdash; "since you mentioned failure, what happens if a business stops marketing entirely?" &mdash; keeps it feeling like a conversation, not an interrogation. The order above is built so these bridges are always true, not forced.</p></div>
+    </div>
+    <div class="pb-item">
+      <div class="num">4</div>
+      <div><strong>Let the restart happen naturally, don't force it</strong><p>If Shay's answer needs the question's context to stand alone, ask him to restate it &mdash; but don't make him echo it every time. A stiff, rehearsed-sounding restart hurts authenticity more than a caption in editing costs you.</p></div>
+    </div>
+    <div class="pb-item">
+      <div class="num">5</div>
+      <div><strong>3-second silent hold before and after each answer</strong><p>Clean in/out points for the editor &mdash; no scrambling to find a cut.</p></div>
+    </div>
+    <div class="pb-item">
+      <div class="num">6</div>
+      <div><strong>Log the deliverable + submission date same day</strong><p>Back in the tracker sheet, right after edit &mdash; keeps next session's planning trustworthy. For the Partner Program answer specifically, also flag Basecamp #8156787211 done once it's shot.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="margin-bottom:20px;">
+  <div class="section-head"><h2>Banked for session 03</h2><div class="rule"></div></div>
+  <div class="callout">
+    <div class="flag">&#9873;</div>
+    <p><strong>Backlog restocked.</strong> 3 fresh Team &amp; Culture questions didn't have a clean bridge into this round and are banked for next time: <em>DR mascot, go-to karaoke song, one meal forever</em>. Also bumped back (no rush, both evergreen): <em>How Much Does Marketing Actually Cost</em> and <em>Should Business Owners Be Creating Personal Brand Content</em>.</p>
+  </div>
+</section>
+
+<section style="margin-bottom:0;">
+  <div class="section-head"><h2>Already shot &mdash; don't repeat</h2><div class="rule"></div></div>
+  <div class="chipwrap">
+    <span class="chip">Typical day as CEO</span>
+    <span class="chip">Lessons from hundreds of dentists</span>
+    <span class="chip">How AI changed how DR runs</span>
+    <span class="chip">$5K marketing budget</span>
+    <span class="chip">Service that shouldn't be skipped</span>
+    <span class="chip">Favorite office snack</span>
+    <span class="chip">What is DR Pulse</span>
+    <span class="chip">10 hrs/week on marketing</span>
+    <span class="chip">Cost of a typo</span>
+    <span class="chip">Website redesign frequency</span>
+    <span class="chip">Traffic vs. conversion</span>
+    <span class="chip">Screen time</span>
+    <span class="chip">Deserted island survivor</span>
+    <span class="chip">Worst-fit position at DR</span>
+    <span class="chip">Hardest part of running an agency</span>
+    <span class="chip">How we measure client success</span>
+    <span class="chip">Books that changed his thinking</span>
+    <span class="chip">The channel you actually own (email)</span>
+    <span class="chip">Client wants to cancel</span>
+    <span class="chip">If not CEO, then what</span>
+    <span class="chip">Meetings per week</span>
+    <span class="chip">Starbucks order</span>
+    <span class="chip">CRM fight tier list</span>
+    <span class="chip">Nate &amp; Shay: most likely to</span>
+  </div>
+</section>
+
+<footer>
+  <span class="wordmark">
+    <img src="images/dr-wordmark-light.png" alt="Digital Resource">
+  </span>
+  <span>&mdash; Video Questions tab, DR content sheet &middot; scoped to Shay's desk Q&amp;A track only. The separate trend-format list (cleaning-desk skits, GRWM, etc.) is a different production line.</span>
+</footer>
+
+</body></html>
